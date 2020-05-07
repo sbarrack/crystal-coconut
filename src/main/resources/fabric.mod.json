@@ -3,17 +3,17 @@
   "id": "modid",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Crystal Coconut",
+  "description": "A Minecraft mod for The DK Crew server",
   "authors": [
-    "Me!"
+    "sbarrack"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://stephenbarrack.com/",
+    "sources": "https://github.com/sbarrack/crystal-coconut"
   },
 
-  "license": "CC0-1.0",
+  "license": "",
   "icon": "assets/modid/icon.png",
 
   "environment": "*",
@@ -29,7 +29,7 @@
   "depends": {
     "fabricloader": ">=0.7.4",
     "fabric": "*",
-    "minecraft": "1.15.x"
+    "minecraft": "1.16-alpha.20.18.a"
   },
   "suggests": {
     "flamingo": "*"
