@@ -9,23 +9,18 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class CrystalCoconut implements ModInitializer {
-
     private static Enchantment SOULBOUND;
 
     @Override
     public void onInitialize() {
-        // This code runs as soon as Minecraft is in a mod-load-ready state.
-        // However, some things (like resources) may still be uninitialized.
-        // Proceed with mild caution.
-
         System.out.println("Initalizing Soulbound");
         SOULBOUND = Registry.register(
                 Registry.ENCHANTMENT,
-                new Identifier("Tweaks", "soulbound"),
+                new Identifier("crystalcoconut", "soulbound"),
                 new Soulbound(
-                        Enchantment.Rarity.VERY_RARE,
-                        EnchantmentTarget.BREAKABLE,
-                        EquipmentSlot.values()
+                    Enchantment.Rarity.VERY_RARE,
+                    EnchantmentTarget.BREAKABLE,
+                    EquipmentSlot.values()
                 )
         );
     }
