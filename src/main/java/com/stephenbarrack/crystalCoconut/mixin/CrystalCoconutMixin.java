@@ -1,15 +1,19 @@
 package com.stephenbarrack.crystalCoconut.mixin;
 
 import net.minecraft.client.gui.screen.TitleScreen;
+import net.minecraft.server.network.ServerPlayerEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(TitleScreen.class)
+@Mixin(value = ServerPlayerEntity.class, priority = 5000)
 public class CrystalCoconutMixin {
-	@Inject(at = @At("HEAD"), method = "init()V")
-	private void init(CallbackInfo info) {
-		System.out.println("This line is printed by an example mod mixin!");
+
+	@Inject(method = "copyFrom", at = @At("RETURN"))
+	private void onRespawn(ServerPlayerEntity player, boolean alive, CallbackInfo ci){
+		if(!alive){
+			//TODO :: Keep all items with Souldbound enchantment
+		}
 	}
 }
