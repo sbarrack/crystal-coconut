@@ -1,12 +1,13 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "crystalcoconut",
   "version": "${version}",
 
   "name": "Crystal Coconut",
   "description": "A Minecraft mod for The DK Crew server",
   "authors": [
-    "sbarrack"
+    "sbarrack",
+    "BUNN1E5"
   ],
   "contact": {
     "homepage": "https://stephenbarrack.com/",
@@ -14,22 +15,21 @@
   },
 
   "license": "",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/crystalcoconut/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "com.stephenbarrack.crystalCoconut.CrystalCoconut"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "crystalcoconut.mixins.json"
   ],
 
   "depends": {
     "fabricloader": ">=0.7.4",
-    "fabric": "*",
-    "minecraft": "1.16-alpha.20.19.a"
+    "fabric": "*"
   },
   "suggests": {
     "flamingo": "*"

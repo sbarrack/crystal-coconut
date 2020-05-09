@@ -1,6 +1,6 @@
 # crystal-coconut
 
-<https://modmuss50.me/fabric.html?&version=20w18a>
+<https://modmuss50.me/fabric.html?&version=20w19a>
 Generate run configs: `./gradlew vscode`
 Generate minecraft src: `./gradlew genSources`
     ctrl+alt+u in build.gradle to reload
