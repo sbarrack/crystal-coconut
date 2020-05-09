@@ -1,6 +1,9 @@
 package com.stephenbarrack.crystalCoconut.mixin;
 
 import net.minecraft.server.network.ServerPlayerEntity;
+
+import com.stephenbarrack.crystalCoconut.CrystalCoconut;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -12,7 +15,8 @@ public class CrystalCoconutMixin {
 	@Inject(method = "copyFrom", at = @At("HEAD"))
 	private void onRespawn(ServerPlayerEntity player, boolean alive, CallbackInfo ci){
 		if(alive){
-			System.out.println("The player is about to die!!");
+			// System.out.println("The player is about to die!!");
+			CrystalCoconut.log.info("The player is about to die!!");
 		}
 	}
 }
