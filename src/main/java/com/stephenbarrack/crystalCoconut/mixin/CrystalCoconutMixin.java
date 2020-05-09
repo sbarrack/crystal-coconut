@@ -1,6 +1,5 @@
 package com.stephenbarrack.crystalCoconut.mixin;
 
-import net.minecraft.client.gui.screen.TitleScreen;
 import net.minecraft.server.network.ServerPlayerEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
