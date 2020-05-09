@@ -3,6 +3,9 @@ package com.stephenbarrack.crystalCoconut.enchantments;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
+import net.minecraft.util.Formatting;
 
 public class Soulbound extends Enchantment {
 
@@ -20,5 +23,10 @@ public class Soulbound extends Enchantment {
     public int getMaximumLevel()
     {
         return 99;
+    }
+
+    @Override
+    public Text getName(int level) {
+        return new TranslatableText(this.getTranslationKey()).formatted(Formatting.GREEN);
     }
 }
