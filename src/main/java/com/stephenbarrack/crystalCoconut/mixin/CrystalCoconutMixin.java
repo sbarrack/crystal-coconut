@@ -10,10 +10,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(value = ServerPlayerEntity.class, priority = 5000)
 public class CrystalCoconutMixin {
 
-	@Inject(method = "copyFrom", at = @At("RETURN"))
+	@Inject(method = "copyFrom", at = @At("HEAD"))
 	private void onRespawn(ServerPlayerEntity player, boolean alive, CallbackInfo ci){
-		if(!alive){
-			//TODO :: Keep all items with Souldbound enchantment
+		if(alive){
+			System.out.println("The player is about to die!!");
 		}
 	}
 }
