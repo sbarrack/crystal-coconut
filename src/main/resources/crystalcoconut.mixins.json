@@ -4,9 +4,9 @@
   "package": "com.stephenbarrack.crystalCoconut.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "CrystalCoconutMixin"
   ],
   "client": [
-    "CrystalCoconutMixin"
   ],
   "injectors": {
     "defaultRequire": 1
