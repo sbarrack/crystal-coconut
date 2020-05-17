@@ -14,19 +14,22 @@ public class Soulbound extends Enchantment {
     }
 
     @Override
-    public int getMinimumPower(int int_1)
-    {
-        return 1;
-    }
-
-    @Override
-    public int getMaximumLevel()
-    {
+    public int getMaximumLevel() {
         return 1;
     }
 
     @Override
     public Text getName(int level) {
         return new TranslatableText(this.getTranslationKey()).formatted(Formatting.GREEN);
+    }
+
+    @Override
+    public boolean isAvailableForRandomSelection() {
+        return false;
+    }
+
+    @Override
+    public boolean isTreasure() {
+        return true;
     }
 }

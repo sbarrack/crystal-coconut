@@ -30,7 +30,7 @@ public class CrystalCoconut implements ModInitializer {
                 Registry.ENCHANTMENT,
                 new Identifier("crystalcoconut", "soulbound"),
                 new Soulbound(
-                    Enchantment.Rarity.VERY_RARE,
+                    Enchantment.Rarity.RARE,
                     EnchantmentTarget.BREAKABLE,
                     EquipmentSlot.values()
                 )
