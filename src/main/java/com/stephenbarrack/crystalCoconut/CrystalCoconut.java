@@ -2,6 +2,7 @@ package com.stephenbarrack.crystalCoconut;
 
 import com.stephenbarrack.crystalCoconut.enchantments.Soulbound;
 
+import com.stephenbarrack.crystalCoconut.mixin.CrystalCoconutMixin;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -11,6 +12,8 @@ import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+
+import java.util.Hashtable;
 
 public class CrystalCoconut implements ModInitializer {
     private static Enchantment SOULBOUND;
