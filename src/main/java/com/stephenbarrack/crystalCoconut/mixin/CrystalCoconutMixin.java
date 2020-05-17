@@ -30,6 +30,7 @@ public class CrystalCoconutMixin {
 			if (inventory.getStack(i).getTag() != null) {
 				if(inventory.getStack(i).getTag().get("Enchantments").asString().contains("crystalcoconut:soulbound")){
 					CrystalCoconut.soulboundItems.put(i, inventory.getStack(i));
+					inventory.removeStack(i);
 				}
 			}
 		}
