@@ -28,9 +28,11 @@ public class CrystalCoconutMixin {
 		for(int i = 0; i < inventory.size(); i++) {
 			//CrystalCoconut.log.info(inventory.getStack(i).getTag());
 			if (inventory.getStack(i).getTag() != null) {
-				if(inventory.getStack(i).getTag().get("Enchantments").asString().contains("crystalcoconut:soulbound")){
-					CrystalCoconut.soulboundItems.put(i, inventory.getStack(i));
-					inventory.removeStack(i);
+				if(inventory.getStack(i).getTag().get("Enchantments") != null) {
+					if (inventory.getStack(i).getTag().get("Enchantments").asString().contains("crystalcoconut:soulbound")) {
+						CrystalCoconut.soulboundItems.put(i, inventory.getStack(i));
+						inventory.removeStack(i);
+					}
 				}
 			}
 		}
