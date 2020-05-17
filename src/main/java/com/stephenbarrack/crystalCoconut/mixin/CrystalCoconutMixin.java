@@ -26,7 +26,6 @@ public class CrystalCoconutMixin {
 		//Check for enchanted items
 		PlayerInventory inventory = ((ServerPlayerEntity) (Object) this).inventory;
 		for(int i = 0; i < inventory.size(); i++) {
-			//CrystalCoconut.log.info(inventory.getStack(i).getTag());
 			if (inventory.getStack(i).getTag() != null) {
 				if(inventory.getStack(i).getTag().get("Enchantments") != null) {
 					if (inventory.getStack(i).getTag().get("Enchantments").asString().contains("crystalcoconut:soulbound")) {
@@ -37,8 +36,6 @@ public class CrystalCoconutMixin {
 			}
 		}
 
-		CrystalCoconut.log.info(CrystalCoconut.soulboundItems.toString());
-
 	}
 
 	@Inject(method = "copyFrom", at = @At("INVOKE"))
@@ -46,7 +43,6 @@ public class CrystalCoconutMixin {
 		Enumeration keys = CrystalCoconut.soulboundItems.keys();
 		while(keys.hasMoreElements()){
 			int i = (int)keys.nextElement();
-			CrystalCoconut.log.info(i);
 			oldPlayer.inventory.setStack(i, CrystalCoconut.soulboundItems.get(i));
 			((ServerPlayerEntity) (Object) this).inventory.setStack(i, CrystalCoconut.soulboundItems.get(i));
 		}
