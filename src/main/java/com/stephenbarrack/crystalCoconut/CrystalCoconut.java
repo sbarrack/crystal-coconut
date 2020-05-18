@@ -4,6 +4,7 @@ import com.stephenbarrack.crystalCoconut.enchantments.Soulbound;
 
 import com.stephenbarrack.crystalCoconut.mixin.CrystalCoconutMixin;
 import net.minecraft.item.ItemStack;
+import net.minecraft.text.Text;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,12 +20,12 @@ import java.util.Hashtable;
 public class CrystalCoconut implements ModInitializer {
     private static Enchantment SOULBOUND;
     public static Logger log = LogManager.getLogger();
-    public static Hashtable<Integer, ItemStack> soulboundItems;
+    public static Hashtable<Text, Hashtable<Integer, ItemStack>> soulboundInventory;
 
     @Override
     public void onInitialize() {
         // System.out.println("Initalizing Soulbound");
-        soulboundItems = new Hashtable<>();
+        soulboundInventory = new Hashtable<>();
         log.info("Initializing soulbound...");
         SOULBOUND = Registry.register(
                 Registry.ENCHANTMENT,
