@@ -2,9 +2,7 @@ package com.stephenbarrack.crystalCoconut;
 
 import com.stephenbarrack.crystalCoconut.enchantments.Soulbound;
 
-import com.stephenbarrack.crystalCoconut.mixin.CrystalCoconutMixin;
 import net.minecraft.item.ItemStack;
-import net.minecraft.text.Text;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,11 +14,12 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 import java.util.Hashtable;
+import java.util.UUID;
 
 public class CrystalCoconut implements ModInitializer {
     private static Enchantment SOULBOUND;
     public static Logger log = LogManager.getLogger();
-    public static Hashtable<Text, Hashtable<Integer, ItemStack>> soulboundInventory;
+    public static Hashtable<UUID, Hashtable<Integer, ItemStack>> soulboundInventory;
 
     @Override
     public void onInitialize() {
