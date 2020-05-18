@@ -24,12 +24,18 @@ public class CrystalCoconutMixin {
 	@Inject(method = "onDeath", at = @At("INVOKE"))
 	public void beforeDeath(DamageSource source, CallbackInfo callbackInfo){
 		//Check for enchanted items
+		ServerPlayerEntity player = ((ServerPlayerEntity) (Object) this);
+
+		if(!CrystalCoconut.soulboundInventory.containsKey(player.getName())){
+			CrystalCoconut.soulboundInventory.put(player.getName(), new Hashtable<>());
+		}
+
 		PlayerInventory inventory = ((ServerPlayerEntity) (Object) this).inventory;
 		for(int i = 0; i < inventory.size(); i++) {
 			if (inventory.getStack(i).getTag() != null) {
 				if(inventory.getStack(i).getTag().get("Enchantments") != null) {
 					if (inventory.getStack(i).getTag().get("Enchantments").asString().contains("crystalcoconut:soulbound")) {
-						CrystalCoconut.soulboundItems.put(i, inventory.getStack(i));
+						CrystalCoconut.soulboundInventory.get(player.getName()).put(i, inventory.getStack(i));
 						inventory.removeStack(i);
 					}
 				}
@@ -40,12 +46,12 @@ public class CrystalCoconutMixin {
 
 	@Inject(method = "copyFrom", at = @At("INVOKE"))
 	private void onRespawn(ServerPlayerEntity oldPlayer, boolean alive, CallbackInfo ci){
-		Enumeration keys = CrystalCoconut.soulboundItems.keys();
+		Enumeration keys = CrystalCoconut.soulboundInventory.get(oldPlayer.getName()).keys();
 		while(keys.hasMoreElements()){
 			int i = (int)keys.nextElement();
-			oldPlayer.inventory.setStack(i, CrystalCoconut.soulboundItems.get(i));
-			((ServerPlayerEntity) (Object) this).inventory.setStack(i, CrystalCoconut.soulboundItems.get(i));
+			oldPlayer.inventory.setStack(i, CrystalCoconut.soulboundInventory.get(oldPlayer.getName()).get(i));
+			((ServerPlayerEntity) (Object) this).inventory.setStack(i, CrystalCoconut.soulboundInventory.get(oldPlayer.getName()).get(i));
 		}
-		CrystalCoconut.soulboundItems.clear();
+		CrystalCoconut.soulboundInventory.get(oldPlayer.getName()).clear();
 	}
 }
