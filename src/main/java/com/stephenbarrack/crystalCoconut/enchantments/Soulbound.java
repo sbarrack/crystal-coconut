@@ -24,8 +24,8 @@ public class Soulbound extends Enchantment {
     }
 
     @Override
-    public boolean isAvailableForRandomSelection() {
-        return false;
+    protected boolean canAccept(net.minecraft.enchantment.Enchantment other) {
+        return !other.isCursed();
     }
 
     @Override
