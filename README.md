@@ -6,5 +6,5 @@ Reset cache: `./gradlew cleanloom`
 Build mod: `./gradlew build`  
 
 Generate minecraft src: `./gradlew genSources`  
-  - ctrl+alt+u in build.gradle to reload  
+  - ctrl+shift+u in build.gradle to reload  
   - ctrl+p with # to search  
