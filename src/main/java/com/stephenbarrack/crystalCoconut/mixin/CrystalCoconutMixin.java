@@ -32,8 +32,12 @@ public class CrystalCoconutMixin {
 		for (int i = 0; i < inventory.size(); i++) {
 			if (inventory.getStack(i).getTag() != null) {
 				if (inventory.getStack(i).getTag().get("Enchantments") != null) {
-					if (inventory.getStack(i).getTag().get("Enchantments").asString()
-							.contains("crystalcoconut:soulbound")) {
+					if (inventory.getStack(i).getTag().get("Enchantments").asString().contains("crystalcoconut:soulbound")) {
+						if (inventory.getStack(i).getMaxDamage() - inventory.getStack(i).getDamage() > 100) {
+							inventory.getStack(i).setDamage(inventory.getStack(i).getDamage() + 100);
+						} else if (inventory.getStack(i).getMaxDamage() - inventory.getStack(i).getDamage() > 10) {
+							inventory.getStack(i).setDamage(10);
+						}
 						CrystalCoconut.soulboundInventory.get(player.getUuid()).put(i, inventory.getStack(i));
 						inventory.removeStack(i);
 					}

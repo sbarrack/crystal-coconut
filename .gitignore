@@ -37,3 +37,7 @@ run/
 
 # Local History for Visual Studio Code
 .history/
+
+# Custom
+remappedSrc
+
