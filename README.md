@@ -1,6 +1,6 @@
 # crystal-coconut
 
-Mappings: <https://modmuss50.me/fabric.html?&version=20w21a>  
+Mappings: <https://modmuss50.me/fabric.html?&version=20w22a>  
 Generate run configs: `./gradlew vscode`  
 Reset cache: `./gradlew cleanloom`  
 Build mod: `./gradlew build`  

@@ -2,12 +2,10 @@ package com.stephenbarrack.crystalCoconut.mixin;
 
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 
 import com.stephenbarrack.crystalCoconut.CrystalCoconut;
 
-import net.minecraft.tag.Tag;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -33,6 +31,20 @@ public class CrystalCoconutMixin {
 			if (inventory.getStack(i).getTag() != null) {
 				if (inventory.getStack(i).getTag().get("Enchantments") != null) {
 					if (inventory.getStack(i).getTag().get("Enchantments").asString().contains("crystalcoconut:soulbound")) {
+						// int damage = inventory.getStack(i).getDamage();
+						// int durability = inventory.getStack(i).getMaxDamage() - damage;
+
+						// if (durability >= 200) {
+						// 	inventory.getStack(i).setDamage(damage + 100);
+						// }
+
+						// if (durability >= 100) {
+						// 	CrystalCoconut.soulboundInventory.get(player.getUuid()).put(i, inventory.getStack(i));
+						// 	inventory.removeStack(i);
+						// } else {
+						// 	inventory.getStack(i).setDamage(inventory.getStack(i).getMaxDamage() - 100);
+						// }
+
 						CrystalCoconut.soulboundInventory.get(player.getUuid()).put(i, inventory.getStack(i));
 						inventory.removeStack(i);
 					}
@@ -50,11 +62,13 @@ public class CrystalCoconutMixin {
 		while (keys.hasMoreElements()) {
 			int i = (int) keys.nextElement();
 			player.inventory.setStack(i, CrystalCoconut.soulboundInventory.get(player.getUuid()).get(i));
-			// if (inventory.getStack(i).getMaxDamage() - inventory.getStack(i).getDamage() > 100) {
-			// 	inventory.getStack(i).setDamage(inventory.getStack(i).getDamage() + 100);
-			// } else if (inventory.getStack(i).getMaxDamage() - inventory.getStack(i).getDamage() > 10) {
-			// 	inventory.getStack(i).setDamage(inventory.getStack(i).getMaxDamage() - 10);
-			// }
+
+			int damage = player.inventory.getStack(i).getDamage();
+			int durability = player.inventory.getStack(i).getMaxDamage() - damage;
+			if (durability > 100) {
+				player.inventory.getStack(i).setDamage(durability - 100 >= 100 ? damage + 100 : player.inventory.getStack(i).getMaxDamage() - 100);
+			}
+			
 			((ServerPlayerEntity) (Object) this).inventory.setStack(i,
 					CrystalCoconut.soulboundInventory.get(player.getUuid()).get(i));
 		}
