@@ -31,22 +31,13 @@ public class CrystalCoconutMixin {
 			if (inventory.getStack(i).getTag() != null) {
 				if (inventory.getStack(i).getTag().get("Enchantments") != null) {
 					if (inventory.getStack(i).getTag().get("Enchantments").asString().contains("crystalcoconut:soulbound")) {
-						// int damage = inventory.getStack(i).getDamage();
-						// int durability = inventory.getStack(i).getMaxDamage() - damage;
+						int damage = inventory.getStack(i).getDamage();
+						int durability = inventory.getStack(i).getMaxDamage() - damage;
 
-						// if (durability >= 200) {
-						// 	inventory.getStack(i).setDamage(damage + 100);
-						// }
-
-						// if (durability >= 100) {
-						// 	CrystalCoconut.soulboundInventory.get(player.getUuid()).put(i, inventory.getStack(i));
-						// 	inventory.removeStack(i);
-						// } else {
-						// 	inventory.getStack(i).setDamage(inventory.getStack(i).getMaxDamage() - 100);
-						// }
-
-						CrystalCoconut.soulboundInventory.get(player.getUuid()).put(i, inventory.getStack(i));
-						inventory.removeStack(i);
+						if (durability > 100) {
+							CrystalCoconut.soulboundInventory.get(player.getUuid()).put(i, inventory.getStack(i));
+							inventory.removeStack(i);
+						} // else if players ender chest has room put it in there
 					}
 				}
 			}
@@ -66,7 +57,7 @@ public class CrystalCoconutMixin {
 			int damage = player.inventory.getStack(i).getDamage();
 			int durability = player.inventory.getStack(i).getMaxDamage() - damage;
 			if (durability > 100) {
-				player.inventory.getStack(i).setDamage(durability - 100 >= 100 ? damage + 100 : player.inventory.getStack(i).getMaxDamage() - 100);
+				player.inventory.getStack(i).setDamage(damage + 100);
 			}
 			
 			((ServerPlayerEntity) (Object) this).inventory.setStack(i,
