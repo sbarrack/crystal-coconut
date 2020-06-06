@@ -3,6 +3,7 @@ package com.stephenbarrack.crystalCoconut.enchantments;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.text.LiteralText;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
@@ -22,8 +23,9 @@ public class Soulbound extends Enchantment {
     @Override
     public Text getName(int level) {
         MutableText temp = new TranslatableText(this.getTranslationKey());
-        if (temp.getString().isBlank()) {
-            temp = temp.append("Blessing of Stasis");
+        // if there's no Fabric API
+        if (temp.getString().isBlank() || temp.getString().equals("enchantment.crystalcoconut.soulbound")) {
+            temp = new LiteralText("Blessing of Stasis");
         }
         return temp.formatted(Formatting.GREEN);
     }
