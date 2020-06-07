@@ -20,15 +20,17 @@ public class SoulboundMixin {
 
 	@Inject(method = "onDeath", at = @At("INVOKE"))
 	public void beforeDeath(DamageSource source, CallbackInfo callbackInfo) {
-		// Check for enchanted items
 		ServerPlayerEntity player = ((ServerPlayerEntity) (Object) this);
-
-		if (!CrystalCoconut.soulboundInventory.containsKey(player.getUuid())) {
-			CrystalCoconut.soulboundInventory.put(player.getUuid(), new Hashtable<>());
-		}
 
 		PlayerInventory inventory = player.inventory;
 		EnderChestInventory enderChest = player.getEnderChestInventory();
+
+		// if (there is no existing soulbound inventory)
+		if (!CrystalCoconut.soulboundInventory.containsKey(player.getUuid())) {
+			// make one
+			CrystalCoconut.soulboundInventory.put(player.getUuid(), new Hashtable<>());
+		}
+		
 		for (int i = 0; i < inventory.size(); i++) {
 			if (inventory.getStack(i).getTag() != null) {
 				if (inventory.getStack(i).getTag().get("Enchantments") != null) {
@@ -51,14 +53,14 @@ public class SoulboundMixin {
 				}
 			}
 		}
-
 	}
 
 	@Inject(method = "onDeath", at = @At("RETURN"))
 	public void afterDeath(DamageSource source, CallbackInfo callbackInfo) {
 		ServerPlayerEntity player = ((ServerPlayerEntity) (Object) this);
 
-		Enumeration keys = CrystalCoconut.soulboundInventory.get(player.getUuid()).keys();
+		Enumeration<Integer> keys = CrystalCoconut.soulboundInventory.get(player.getUuid()).keys();
+
 		while (keys.hasMoreElements()) {
 			int i = (int) keys.nextElement();
 			player.inventory.setStack(i, CrystalCoconut.soulboundInventory.get(player.getUuid()).get(i));
@@ -69,15 +71,16 @@ public class SoulboundMixin {
 				player.inventory.getStack(i).setDamage(damage + 100);
 			}
 
-			((ServerPlayerEntity) (Object) this).inventory.setStack(i,
-					CrystalCoconut.soulboundInventory.get(player.getUuid()).get(i));
+			((ServerPlayerEntity) (Object) this).inventory.setStack(i, CrystalCoconut.soulboundInventory.get(player.getUuid()).get(i));
 		}
+
 		CrystalCoconut.soulboundInventory.get(player.getUuid()).clear();
 	}
 
 	@Inject(method = "copyFrom", at = @At("INVOKE"))
 	private void onRespawn(ServerPlayerEntity oldPlayer, boolean alive, CallbackInfo ci) {
 		ServerPlayerEntity player = ((ServerPlayerEntity) (Object) this);
+		
 		player.inventory.clone(oldPlayer.inventory);
 	}
 }

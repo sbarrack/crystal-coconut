@@ -4,7 +4,8 @@
   "package": "com.stephenbarrack.crystalCoconut.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "SoulboundMixin"
+    "SoulboundMixin",
+    "NightOwlMixin"
   ],
   "client": [
   ],
