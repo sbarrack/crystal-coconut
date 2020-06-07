@@ -39,7 +39,7 @@ public class SoulboundMixin {
 						int durability = inventory.getStack(i).getMaxDamage() - damage;
 
 						// if (strong enough to bind to soul)
-						if (durability > 100) {
+						if (durability > 100 || player.isCreative() || player.isSpectator()) {
 							// bind to soul
 							CrystalCoconut.soulboundInventory.get(player.getUuid()).put(i, inventory.getStack(i));
 							inventory.removeStack(i);
