@@ -23,7 +23,6 @@ public class CrystalCoconut implements ModInitializer {
     @Override
     public void onInitialize() {
         log.info("Initializing soulbound...");
-
         soulboundInventory = new Hashtable<>();
         Registry.register(Registry.ENCHANTMENT, new Identifier("crystalcoconut", "soulbound"), new Soulbound(Enchantment.Rarity.RARE, EnchantmentTarget.BREAKABLE, EquipmentSlot.values()));
     }

@@ -24,7 +24,7 @@ public class Soulbound extends Enchantment {
     public Text getName(int level) {
         MutableText temp = new TranslatableText(this.getTranslationKey());
         // if there's no Fabric API
-        if (temp.getString().isBlank() || temp.getString().equals("enchantment.crystalcoconut.soulbound")) {
+        if (temp.getString().equals("enchantment.crystalcoconut.soulbound")) {
             temp = new LiteralText("Blessing of Stasis");
         }
         return temp.formatted(Formatting.GREEN);

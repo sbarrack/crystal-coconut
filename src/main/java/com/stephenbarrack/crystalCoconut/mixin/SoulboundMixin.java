@@ -3,6 +3,7 @@ package com.stephenbarrack.crystalCoconut.mixin;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.EnderChestInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 
 import com.stephenbarrack.crystalCoconut.CrystalCoconut;
@@ -14,13 +15,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Enumeration;
 import java.util.Hashtable;
+import java.util.Objects;
 
 @Mixin(value = ServerPlayerEntity.class, priority = 5000)
 public class SoulboundMixin {
 
 	@Inject(method = "onDeath", at = @At("INVOKE"))
 	public void beforeDeath(DamageSource source, CallbackInfo callbackInfo) {
-		ServerPlayerEntity player = ((ServerPlayerEntity) (Object) this);
+		ServerPlayerEntity player = (ServerPlayerEntity)(Object)this;
 
 		PlayerInventory inventory = player.inventory;
 		EnderChestInventory enderChest = player.getEnderChestInventory();
@@ -32,21 +34,22 @@ public class SoulboundMixin {
 		}
 		
 		for (int i = 0; i < inventory.size(); i++) {
-			if (inventory.getStack(i).getTag() != null) {
-				if (inventory.getStack(i).getTag().get("Enchantments") != null) {
-					if (inventory.getStack(i).getTag().get("Enchantments").asString().contains("crystalcoconut:soulbound")) {
-						int damage = inventory.getStack(i).getDamage();
-						int durability = inventory.getStack(i).getMaxDamage() - damage;
+			ItemStack item = inventory.getStack(i);
+			if (item.getTag() != null) {
+				if (item.getTag().get("Enchantments") != null) {
+					if (Objects.requireNonNull(item.getTag().get("Enchantments")).asString().contains("crystalcoconut:soulbound")) {
+						int damage = item.getDamage();
+						int durability = item.getMaxDamage() - damage;
 
 						// if (strong enough to bind to soul)
 						if (durability > 100 || player.isCreative() || player.isSpectator()) {
 							// bind to soul
-							CrystalCoconut.soulboundInventory.get(player.getUuid()).put(i, inventory.getStack(i));
+							CrystalCoconut.soulboundInventory.get(player.getUuid()).put(i, item);
 							inventory.removeStack(i);
 						} // else if (player's enderchest has room)
-						else if (enderChest.canInsert(inventory.getStack(i))) {
+						else if (enderChest.canInsert(item)) {
 							// bind to enderchest
-							enderChest.addStack(inventory.getStack(i));
+							enderChest.addStack(item);
 							inventory.removeStack(i);
 						}
 					}
@@ -57,12 +60,12 @@ public class SoulboundMixin {
 
 	@Inject(method = "onDeath", at = @At("RETURN"))
 	public void afterDeath(DamageSource source, CallbackInfo callbackInfo) {
-		ServerPlayerEntity player = ((ServerPlayerEntity) (Object) this);
+		ServerPlayerEntity player = (ServerPlayerEntity)(Object)this;
 
 		Enumeration<Integer> keys = CrystalCoconut.soulboundInventory.get(player.getUuid()).keys();
 
 		while (keys.hasMoreElements()) {
-			int i = (int) keys.nextElement();
+			int i = keys.nextElement();
 			player.inventory.setStack(i, CrystalCoconut.soulboundInventory.get(player.getUuid()).get(i));
 
 			int damage = player.inventory.getStack(i).getDamage();
@@ -71,7 +74,7 @@ public class SoulboundMixin {
 				player.inventory.getStack(i).setDamage(damage + 100);
 			}
 
-			((ServerPlayerEntity) (Object) this).inventory.setStack(i, CrystalCoconut.soulboundInventory.get(player.getUuid()).get(i));
+			player.inventory.setStack(i, CrystalCoconut.soulboundInventory.get(player.getUuid()).get(i));
 		}
 
 		CrystalCoconut.soulboundInventory.get(player.getUuid()).clear();
@@ -79,8 +82,8 @@ public class SoulboundMixin {
 
 	@Inject(method = "copyFrom", at = @At("INVOKE"))
 	private void onRespawn(ServerPlayerEntity oldPlayer, boolean alive, CallbackInfo ci) {
-		ServerPlayerEntity player = ((ServerPlayerEntity) (Object) this);
-		
+		ServerPlayerEntity player = (ServerPlayerEntity)(Object)this;
+
 		player.inventory.clone(oldPlayer.inventory);
 	}
 }
