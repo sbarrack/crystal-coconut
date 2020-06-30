@@ -17,15 +17,13 @@ import java.util.Hashtable;
 import java.util.UUID;
 
 public class CrystalCoconut implements ModInitializer {
-    private static Enchantment SOULBOUND;
     public static Logger log = LogManager.getLogger();
     public static Hashtable<UUID, Hashtable<Integer, ItemStack>> soulboundInventory;
 
     @Override
     public void onInitialize() {
-        soulboundInventory = new Hashtable<>();
         log.info("Initializing soulbound...");
-        SOULBOUND = Registry.register(Registry.ENCHANTMENT, new Identifier("crystalcoconut", "soulbound"),
-                new Soulbound(Enchantment.Rarity.RARE, EnchantmentTarget.BREAKABLE, EquipmentSlot.values()));
+        soulboundInventory = new Hashtable<>();
+        Registry.register(Registry.ENCHANTMENT, new Identifier("crystalcoconut", "soulbound"), new Soulbound(Enchantment.Rarity.RARE, EnchantmentTarget.BREAKABLE, EquipmentSlot.values()));
     }
 }

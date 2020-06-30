@@ -16,7 +16,7 @@ public class Soulbound extends Enchantment {
     }
 
     @Override
-    public int getMaximumLevel() {
+    public int getMaxLevel() {
         return 1;
     }
 

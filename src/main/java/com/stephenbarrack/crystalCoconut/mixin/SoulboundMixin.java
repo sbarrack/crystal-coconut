@@ -19,6 +19,7 @@ import java.util.Objects;
 
 @Mixin(value = ServerPlayerEntity.class, priority = 5000)
 public class SoulboundMixin {
+	public final int soulStrength = 10;
 
 	@Inject(method = "onDeath", at = @At("INVOKE"))
 	public void beforeDeath(DamageSource source, CallbackInfo callbackInfo) {
@@ -42,7 +43,7 @@ public class SoulboundMixin {
 						int durability = item.getMaxDamage() - damage;
 
 						// if (strong enough to bind to soul)
-						if (durability > 100 || player.isCreative() || player.isSpectator()) {
+						if (durability > item.getMaxDamage() / soulStrength || player.isCreative() || player.isSpectator()) {
 							// bind to soul
 							CrystalCoconut.soulboundInventory.get(player.getUuid()).put(i, item);
 							inventory.removeStack(i);
@@ -70,7 +71,7 @@ public class SoulboundMixin {
 
 			int damage = player.inventory.getStack(i).getDamage();
 			int durability = player.inventory.getStack(i).getMaxDamage() - damage;
-			if (durability > 100 && !(player.isCreative() || player.isSpectator())) {
+			if (durability > player.inventory.getStack(i).getMaxDamage() / soulStrength && !(player.isCreative() || player.isSpectator())) {
 				player.inventory.getStack(i).setDamage(damage + 100);
 			}
 
