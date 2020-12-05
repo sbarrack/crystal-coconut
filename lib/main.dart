@@ -1,6 +1,6 @@
 import 'package:objd/core.dart';
 import 'package:path/path.dart' as Path;
-import 'dart:io' show Platform, Directory;
+import 'dart:io' show Platform;
 
 void main(List<String> args) {
   var path = Platform.environment['HOME'];
@@ -8,12 +8,6 @@ void main(List<String> args) {
     path = Path.join(Platform.environment['UserProfile'], 'AppData\\Roaming');
   }
   path = Path.join(path, '.minecraft\\saves\\Datapack test\\datapacks\\');
-  print(path);
-  if (Directory(path).existsSync()) {
-    print('true');
-  } else {
-    print('false');
-  }
 
   createProject(
     Project(
