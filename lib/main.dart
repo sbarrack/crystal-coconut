@@ -13,7 +13,7 @@ void main(List<String> args) {
   createProject(
     Project(
       name: "Crystal Coconut",
-      description: "Improving UX without changing game mechanics",
+      description: "Same mechanics, improved UX\nby SteveTheMCKing",
       version: 16,
       target: path,
       generate: Main(),
@@ -26,7 +26,7 @@ class Main extends Widget {
   @override
   generate(Context context) {
     return Pack(
-      name: "crystal_coconut",
+      name: "cc",
       load: File(
         "load",
         child: null,
@@ -34,9 +34,12 @@ class Main extends Widget {
       main: File(
         "main",
         child: For.of([
-          Nightowl(),
+          NightowlMain(),
         ]),
       ),
+      files: [
+        File("nightowl", child: Nightowl()),
+      ],
     );
   }
 }
