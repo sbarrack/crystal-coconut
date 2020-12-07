@@ -1,5 +1,8 @@
 import 'package:objd/core.dart';
 
+const queryTimeout = 200;
+const sleepTimeout = 12000;
+
 class NightowlMain extends Widget {
   @override
   generate(Context context) {
@@ -10,37 +13,49 @@ class NightowlMain extends Widget {
           If(Condition.not(Scoreboard("cc_no_sleep")[Entity.Self()].matches(0)), then: [
             Score.fromSelected("cc_no_sleep").subtract(1),
             stop(),
-          ]),
-          If(Condition.not(Scoreboard("cc_no_query")[Entity.Self()].matches(0)), then: [
-            Score.fromSelected("cc_no_query").subtract(1),
-            stop(),
-          ]),
-          If(Block.nbt("#minecraft:beds"), then: [
-            Score.fromSelected("cc_no_query").set(300),
-            // Scoreboard.setdisplay("cc_no_query"), // debug
-            Tellraw(
-              Entity.Self(),
-              show: [
-                TextComponent(
-                  "Sleep until nightfall?",
-                  color: Color.Aqua,
-                  hoverEvent: TextHoverEvent.text([
+          ],
+          orElse: [
+            If(Condition.not(Scoreboard("cc_no_query")[Entity.Self()].matches(0)), then: [
+              Score.fromSelected("cc_no_query").subtract(1),
+              stop(),
+            ],
+            orElse: [
+              If(Block.nbt("#minecraft:beds"), then: [
+                Score.fromSelected("cc_no_query").set(queryTimeout),
+                // Scoreboard.setdisplay("cc_no_query"), // debug
+                Tellraw(
+                  Entity.Self(),
+                  show: [
                     TextComponent(
-                      "Click to hit the sack...",
+                      "Sleep until nightfall?",
+                      color: Color.Aqua,
+                      hoverEvent: TextHoverEvent.text([
+                        TextComponent(
+                          "Click to hit the sack...",
+                          color: Color.Gray,
+                        ),
+                      ]),
+                      clickEvent: TextClickEvent.run_command(Command("function cc:nightowl")),
+                    ),
+                    TextComponent(
+                      " (click)",
                       color: Color.Gray,
                     ),
-                  ]),
-                  clickEvent: TextClickEvent.run_command(Command("function cc:nightowl")),
+                  ],
                 ),
-                TextComponent(
-                  " (click)",
-                  color: Color.Gray,
-                ),
+                stop(),
               ],
-            ),
+              orElse: [
+                If(
+                  Condition.not(Condition.or([
+                    Blocks.air,
+                    Entity.Self(distance: Range(0, 4)),
+                  ])),
+                  then: [stop()],
+                ),
+              ]),
+            ]),
           ]),
-          If(Condition.not(Blocks.air), then: [stop()]),
-          If(Condition.not(Entity.Self(distance: Range(0, 4))), then: [stop()]),
         ]);
       },
     );
@@ -56,8 +71,8 @@ class Nightowl extends Widget {
         Condition.not(Scoreboard("cc_no_query")[Entity.Self()].matches(0)),
       ]),
       then: [
-        Score(Entity.All(), "cc_no_query").set(0),
-        Score(Entity.All(), "cc_no_sleep").set(12000),
+        Score(Entity.All(), "cc_no_query").set(queryTimeout),
+        Score(Entity.All(), "cc_no_sleep").set(sleepTimeout),
         // Scoreboard.setdisplay("cc_no_sleep"), // debug
         Command("time set night"),
       ],
