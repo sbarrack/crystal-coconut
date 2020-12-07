@@ -2,6 +2,7 @@ import "package:objd/core.dart";
 import "package:path/path.dart" as Path;
 import "dart:io" show Platform;
 import "./nightowl.dart";
+import "./soulbound.dart";
 
 void main(List<String> args) {
   var path = Platform.environment["HOME"];
@@ -39,6 +40,7 @@ class Main extends Widget {
       ),
       files: [
         File("nightowl", child: Nightowl()),
+        File("soulbound", child: Soulbound()),
       ],
     );
   }
