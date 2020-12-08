@@ -2,6 +2,7 @@ import "package:objd/core.dart";
 import "package:path/path.dart" as Path;
 import "dart:io" show Platform;
 import "./nightowl.dart";
+import "./realtime.dart";
 import "./soulbound.dart";
 
 void main(List<String> args) {
@@ -30,7 +31,9 @@ class Main extends Widget {
       name: "cc",
       load: File(
         "load",
-        child: null,
+        child: For.of([
+          RealtimeLoad(),
+        ]),
       ),
       main: File(
         "main",
@@ -40,6 +43,8 @@ class Main extends Widget {
       ),
       files: [
         File("nightowl", child: Nightowl()),
+        File("realtime_on", child: RealtimeOn()),
+        File("realtime_off", child: RealtimeOff()),
         File("soulbound", child: Soulbound()),
       ],
     );
