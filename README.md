@@ -1,2 +1,2 @@
 # crystal-coconut
-A datapack which aims to improve UX without changing game mechanics
+A Minecraft datapack which aims to improve UX without changing game mechanics
