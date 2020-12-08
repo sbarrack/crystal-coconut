@@ -1,10 +1,16 @@
 import 'package:objd/core.dart';
 
-const queryTimeout = 200;
+const timer = "nightowl_timer";
+const store = "storage";
+const key = "nightowl";
+const objective = "cc_nightowl";
+
+const interval = 19; // tps - 1
+var queryTimeout = (200 / interval).floor();
+var sleepTimeout = (12000 / interval).floor();
 const queryObjective = "cc_no_query";
-const sleepTimeout = 12000;
-const sleepTimeoutRealtime = 12000 * 72;
 const sleepObjective = "cc_no_sleep";
+var sleepTimeoutRealtime = (sleepTimeout * 72 / interval).floor();
 
 class NightowlMain extends Widget {
   @override
@@ -16,16 +22,14 @@ class NightowlMain extends Widget {
           If(Condition.not(Scoreboard(sleepObjective)[Entity.Self()].matches(0)), then: [
             Score.fromSelected(sleepObjective).subtract(1),
             stop(),
-          ],
-          orElse: [
+          ], orElse: [
             If(Condition.not(Scoreboard(queryObjective)[Entity.Self()].matches(0)), then: [
               Score.fromSelected(queryObjective).subtract(1),
               stop(),
-            ],
-            orElse: [
+            ], orElse: [
               If(Block.nbt("#minecraft:beds"), then: [
                 Score.fromSelected(queryObjective).set(queryTimeout),
-                // Scoreboard.setdisplay(queryObjective), // debug
+                Scoreboard.setdisplay(queryObjective), // debug
                 Tellraw(
                   Entity.Self(),
                   show: [
@@ -47,8 +51,7 @@ class NightowlMain extends Widget {
                   ],
                 ),
                 stop(),
-              ],
-              orElse: [
+              ], orElse: [
                 If(
                   Condition.not(Condition.or([
                     Blocks.air,
@@ -75,24 +78,66 @@ class Nightowl extends Widget {
       ]),
       then: [
         Score(Entity.All(), queryObjective).set(queryTimeout),
-        If(Scoreboard("cc_realtime")[Entity.Self()].matches(1),
+        If(
+          Scoreboard("cc_realtime")[Entity.Self()].matches(1),
           then: [Score(Entity.All(), sleepObjective).set(sleepTimeoutRealtime)],
           orElse: [Score(Entity.All(), sleepObjective).set(sleepTimeout)],
         ),
-        // Scoreboard.setdisplay(sleepObjective), // debug
+        Scoreboard.setdisplay(sleepObjective), // debug
         Command("time set night"),
+        Particle(
+          Particles.poof,
+          location: Location.here(),
+          delta: Location.glob(x: 2, y: 1, z: 2),
+          speed: 0.5,
+          count: 50,
+        ),
+        Execute.asat(Entity.Self(), children: [Command("playsound minecraft:entity.experience_orb.pickup master @s ~ ~ ~ 1 0.2")]),
       ],
       orElse: [
         Tellraw(
           Entity.Self(),
           show: [
             TextComponent(
-              "You are not at a bed or 10 minutes (12 hours with realtime enabled) have not passed!",
+              "You are not at a bed or 10 minutes (12 hours with realtime on) have not passed!",
               color: Color.Red,
             )
           ],
         ),
       ],
     );
+  }
+}
+
+class NightowlLoad extends Widget {
+  @override
+  generate(Context context) {
+    return If(
+      Data.get(DataStorage("cc:" + store), path: key),
+      then: [NightowlOn()],
+      orElse: [NightowlOff()],
+    );
+  }
+}
+
+class NightowlOn extends Widget {
+  @override
+  generate(Context context) {
+    return For.of([
+      Storage.set(store, key: key, value: true),
+      Score(Entity(), objective).set(1),
+      Timer(timer, children: [NightowlMain()], ticks: interval),
+    ]);
+  }
+}
+
+class NightowlOff extends Widget {
+  @override
+  generate(Context context) {
+    return For.of([
+      Storage.set(store, key: key, value: false),
+      Score(Entity(), objective).set(0),
+      Timer.stop(timer),
+    ]);
   }
 }

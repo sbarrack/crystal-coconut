@@ -1,5 +1,6 @@
 import 'package:objd/core.dart';
 
+const interval = 71; // tps - 1
 const timer = "realtime_timer";
 const store = "storage";
 const key = "realtime";
@@ -23,7 +24,7 @@ class RealtimeOn extends Widget {
       Storage.set(store, key: key, value: true),
       Score(Entity(), objective).set(1),
       Command("gamerule doDaylightCycle false"),
-      Timer(timer, children: [Command("time add 1")], ticks: 72),
+      Timer(timer, children: [Command("time add 1")], ticks: interval),
     ]);
   }
 }

@@ -5,6 +5,8 @@ import "./nightowl.dart";
 import "./realtime.dart";
 import "./soulbound.dart";
 
+const mcVer = 16;
+
 void main(List<String> args) {
   var path = Platform.environment["HOME"];
   if (Platform.isWindows) {
@@ -16,7 +18,7 @@ void main(List<String> args) {
     Project(
       name: "Crystal Coconut",
       description: "Same mechanics, improved UX\nby SteveTheMCKing",
-      version: 16,
+      version: mcVer,
       target: path,
       generate: Main(),
     ),
@@ -32,20 +34,29 @@ class Main extends Widget {
       load: File(
         "load",
         child: For.of([
+          ServerVersionCheck(
+            minVersion: mcVer,
+            versionTooLow: [Log(
+              "[ Crystal Coconut ]: Your Minecraft version is out of date!"
+              " Please use 1.$mcVer or greater. Failure to comply will result"
+              " in unexpected behavior which will not be supported by the"
+              " developer of this datapack."
+            )],
+          ),
+          NightowlLoad(),
           RealtimeLoad(),
-        ]),
-      ),
-      main: File(
-        "main",
-        child: For.of([
-          NightowlMain(),
+          SoulboundLoad(),
         ]),
       ),
       files: [
+        // custom commands
         File("nightowl", child: Nightowl()),
+        File("nightowl_on", child: NightowlOn()),
+        File("nightowl_off", child: NightowlOff()),
         File("realtime_on", child: RealtimeOn()),
         File("realtime_off", child: RealtimeOff()),
-        File("soulbound", child: Soulbound()),
+        File("soulbound_on", child: SoulboundOn()),
+        File("soulbound_off", child: SoulboundOff()),
       ],
     );
   }
