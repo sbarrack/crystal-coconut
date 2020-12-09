@@ -4,18 +4,16 @@ const timer = "soulbound_timer";
 const store = "storage";
 const key = "soulbound";
 const objective = "cc_soulbound";
+const deathObjective = "cc_deaths";
 
-class Soulbound extends Widget {
-  @override
-  generate(Context context) {
-    return;
-  }
-}
 class SoulboundMain extends Widget {
   @override
   generate(Context context) {
-    return Entity.All().forEach((player, strait) => {
-      
+    return Entity.All().forEach((player, _) => {
+      If(Condition.not(Scoreboard(deathObjective)[player].matches(0)), then: [
+        Score.fromSelected(deathObjective).set(0),
+        // TODO Iterate through items and remove ones that cant be soulbound
+      ]),
     });
   }
 }
@@ -37,6 +35,7 @@ class SoulboundOn extends Widget {
     return For.of([
       Storage.set(store, key: key, value: true),
       Score(Entity(), objective).set(1),
+      Scoreboard(deathObjective, type: "deathCount", display: TextComponent(deathObjective)),
       Command("gamerule keepInventory true"),
       Timer(timer, children: [SoulboundMain()], ticks: 0),
     ]);
