@@ -10,9 +10,7 @@ const sleepObjective = "cc_no_sleep";
 const interval = 19; // tps - 1
 var queryTimeout = 9; // secs
 var sleepTimeout = 12000 ~/ (interval + 1); // one night
-var sleepTimeoutRealtime = sleepTimeout * 72; // one irl night
 Score state = Score(Entity(playerName: vars), key);
-Score rtState = Score(Entity(playerName: vars), "rt");
 Score zero = Score(Entity(playerName: vars), "zero");
 
 class NightowlOn extends Widget {
@@ -135,11 +133,7 @@ class Nightowl extends Widget {
       ]),
       then: [
         Score(Entity.All(), queryObjective).set(1),
-        If(
-          rtState.matches(1),
-          then: [Score(Entity.All(), sleepObjective).set(sleepTimeoutRealtime)],
-          orElse: [Score(Entity.All(), sleepObjective).set(sleepTimeout)],
-        ),
+        Score(Entity.All(), sleepObjective).set(sleepTimeout),
         // Scoreboard.setdisplay(sleepObjective), // debug
         Command("time set 12000"),
         Particle(

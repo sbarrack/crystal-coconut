@@ -2,8 +2,8 @@ import "package:objd/core.dart";
 import "package:path/path.dart" as Path;
 import "dart:io" show Platform;
 
-import "./lib/realtime.dart";
 import "./lib/nightowl.dart";
+import "./lib/soulbound.dart";
 
 void main(List<String> args) {
   var path = Platform.environment["HOME"];
@@ -40,11 +40,11 @@ class Index extends Widget {
       files: [
         File("on", child: AllOn()),
         File("off", child: AllOff()),
-        File("rt/on", child: RealtimeOn()),
-        File("rt/off", child: RealtimeOff()),
         File("no/sleep", child: Nightowl()),
         File("no/on", child: NightowlOn()),
         File("no/off", child: NightowlOff()),
+        File("sb/on", child: SoulboundOn()),
+        File("sb/off", child: SoulboundOff()),
       ],
     );
   }
@@ -54,8 +54,8 @@ class Load extends Widget {
   @override
   generate(Context context) {
     return For.of([
-      RealtimeLoad(),
       NightowlLoad(),
+      SoulboundLoad(),
     ]);
   }
 }
@@ -63,7 +63,9 @@ class Load extends Widget {
 class Main extends Widget {
   @override
   generate(Context context) {
-    return;
+    return For.of([
+      SoulboundMain(),
+    ]);
   }
 }
 
@@ -71,8 +73,8 @@ class AllOn extends Widget {
   @override
   generate(Context context) {
     return CommandList([
-      Command("function cc:rt/on"),
       Command("function cc:no/on"),
+      Command("function cc:sb/on"),
     ]);
   }
 }
@@ -81,8 +83,8 @@ class AllOff extends Widget {
   @override
   generate(Context context) {
     return CommandList([
-      Command("function cc:rt/off"),
       Command("function cc:no/off"),
+      Command("function cc:sb/off"),
     ]);
   }
 }
