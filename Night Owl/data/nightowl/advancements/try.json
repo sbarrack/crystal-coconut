@@ -1,0 +1,35 @@
+{
+    "display": {
+        "title": {
+            "text": "Sleeping...",
+            "color": "dark_aqua"
+        },
+        "description": {
+            "text": "True if the player has slept",
+            "color": "gray"
+        },
+        "icon": {
+            "item": "minecraft:blue_bed"
+        },
+        "frame": "task",
+        "show_toast": false,
+        "announce_to_chat": false
+    },
+    "criteria": {
+        "criterion": {
+            "trigger": "minecraft:item_used_on_block",
+            "conditions": {
+                "location": {
+                    "dimension": "minecraft:overworld",
+                    "block": {
+                        "tag": "beds"
+                    }
+                }
+            }
+        }
+    },
+    "parent": "nightowl:enabled",
+    "rewards": {
+        "function": "nightowl:sleep"
+    }
+}

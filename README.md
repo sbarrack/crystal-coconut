@@ -1,2 +1,2 @@
 # Crystal Coconut
-A Minecraft datapack which aims to improve UX without changing game mechanics
+A collection of Minecraft datapacks which aim to improve UX without changing game mechanics
