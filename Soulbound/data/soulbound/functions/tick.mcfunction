@@ -1,8 +1,20 @@
-# soulbound items are tagged #soulbound:soulbound
-# items that must be enchanted to be soulbound are tagged #soulbound:bindable
+scoreboard objectives add sb_deaths deathCount
+scoreboard objectives add sb_debt dummy
+scoreboard objectives add sb_calc dummy
+scoreboard objectives add sb_40 dummy
+scoreboard players set #cc sb_40 40
 
-# TODO
-# 1. if player died (use scoreboard with deathCount)
-# 2. subtract xp for armor and offhand if they're there
-# 3. replace items from remaining inventory/hotbar slots if they are not soulbound or bindable+enchanted and subtract xp
-# 4. reset deathCount score
+execute as @a[scores={sb_debt=1..}] run xp add @s -1 points
+execute as @a[scores={sb_debt=1..}] run scoreboard players remove @s sb_debt 1
+
+execute as @a unless score @s sb_deaths matches 0 run scoreboard players set @s sb_calc 0
+execute as @a unless score @s sb_deaths matches 0 store result score @s sb_calc run clear @s #soulbound:multiple 0
+execute as @a unless score @s sb_deaths matches 0 run scoreboard players operation @s sb_debt += @s sb_calc
+execute as @a unless score @s sb_deaths matches 0 run scoreboard players set @s sb_calc 0
+execute as @a unless score @s sb_deaths matches 0 store result score @s sb_calc run clear @s #soulbound:single 0
+execute as @a unless score @s sb_deaths matches 0 run scoreboard players operation @s sb_calc *= #cc sb_40
+execute as @a unless score @s sb_deaths matches 0 run scoreboard players operation @s sb_debt += @s sb_calc
+
+# TODO clear all items (clear/replaceitem/item)? that are not #soulbound 
+
+scoreboard players set @a sb_deaths 0
