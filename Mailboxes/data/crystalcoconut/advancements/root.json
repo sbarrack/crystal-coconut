@@ -1,0 +1,25 @@
+{
+    "display": {
+        "title": {
+            "text": "Crystal Coconut",
+            "color": "gold"
+        },
+        "description": {
+            "text": "The crystal coconut datapack",
+            "color": "gray"
+        },
+        "icon": {
+            "item": "minecraft:stripped_spruce_log"
+        },
+        "frame": "challenge",
+        "show_toast": false,
+        "announce_to_chat": false,
+        "hidden": false,
+        "background": "minecraft:textures/block/ancient_debris_side.png"
+    },
+    "criteria": {
+        "criterion": {
+            "trigger": "minecraft:tick"
+        }
+    }
+}
