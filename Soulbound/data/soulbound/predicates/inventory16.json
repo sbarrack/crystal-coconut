@@ -1,0 +1,320 @@
+{
+    "condition": "minecraft:alternative",
+    "terms": [
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:enchanted_golden_apple\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:dragon_egg\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:nether_star\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:wither_skeleton_skull\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:written_book\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:filled_map\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:shulker_box\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:white_shulker_box\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:orange_shulker_box\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:magenta_shulker_box\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:light_blue_shulker_box\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:yellow_shulker_box\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:lime_shulker_box\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:pink_shulker_box\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:gray_shulker_box\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:light_gray_shulker_box\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:cyan_shulker_box\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:purple_shulker_box\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:blue_shulker_box\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:brown_shulker_box\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:green_shulker_box\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:red_shulker_box\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:black_shulker_box\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:netherite_shovel\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:netherite_pickaxe\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:netherite_axe\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:netherite_hoe\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:netherite_sword\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:netherite_helmet\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:netherite_chestplate\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:netherite_leggings\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:netherite_boots\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:diamond_shovel\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:diamond_pickaxe\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:diamond_axe\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:diamond_hoe\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:diamond_helmet\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:diamond_chestplate\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:diamond_leggings\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:diamond_boots\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:diamond_sword\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:bow\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:crossbow\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:trident\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:25b,id:\"minecraft:elytra\"}]}"
+            }
+        }
+    ]
+}
