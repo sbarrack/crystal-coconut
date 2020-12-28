@@ -4,7 +4,7 @@ A collection of Minecraft datapacks which aim to improve UX without changing gam
 
 ## Installation
 
-1. Download the latest file under releases or from Curseforge, titled `crystalcoconut-1.1X.X.zip`
+1. Download the latest file under releases or from Curseforge, titled `crystalcoconut-1.X.zip`
 2. Extract it to the root of the datapacks folder in your world
     - `C:/Users/User Name/AppData/Roaming/.minecraft/saves/World Name/datapacks` on Windows
     - `/home/username/.minecraft/saves/World Name/datapacks` on Linux
