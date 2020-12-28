@@ -22,6 +22,7 @@
         "minecraft:bow",
         "minecraft:crossbow",
         "minecraft:trident",
-        "minecraft:elytra"
+        "minecraft:elytra",
+        "minecraft:totem_of_undying"
     ]
 }

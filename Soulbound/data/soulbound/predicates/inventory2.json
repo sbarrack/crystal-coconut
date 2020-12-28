@@ -315,6 +315,13 @@
             "predicate": {
                 "nbt": "{Inventory:[{Slot:11b,id:\"minecraft:elytra\"}]}"
             }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "nbt": "{Inventory:[{Slot:11b,id:\"minecraft:totem_of_undying\"}]}"
+            }
         }
     ]
 }
