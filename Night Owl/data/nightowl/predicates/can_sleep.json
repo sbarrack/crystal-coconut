@@ -11,16 +11,16 @@
 						{
 							"condition": "minecraft:time_check",
 							"value": {
-								"min": 0,
-								"max": 12541
+								"min": 23041,
+								"max": 24000
 							},
 							"period": 24000
 						},
 						{
 							"condition": "minecraft:time_check",
 							"value": {
-								"min": 23460,
-								"max": 23999
+								"min": 0,
+								"max": 1999
 							},
 							"period": 24000
 						}
