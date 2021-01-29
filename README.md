@@ -18,7 +18,7 @@ Sleep through the day
 
 #### Usage
 
-- Right click any bed during the day to sleep until morning
+- Without holding an item, right click any bed early in the morning to sleep until evening
 - On a server, only one player needs to click
 
 ### Soulbound
