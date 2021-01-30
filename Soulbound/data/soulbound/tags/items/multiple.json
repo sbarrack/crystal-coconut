@@ -5,6 +5,7 @@
         "minecraft:nether_star",
         "minecraft:wither_skeleton_skull",
         "minecraft:written_book",
-        "minecraft:filled_map"
+        "minecraft:filled_map",
+        "minecraft:beacon"
     ]
 }

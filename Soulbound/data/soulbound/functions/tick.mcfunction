@@ -6,6 +6,7 @@ scoreboard objectives add sb_single dummy
 scoreboard objectives add sb_multiple dummy
 scoreboard players set #cc sb_single 40
 scoreboard players set #cc sb_multiple 2
+scoreboard players set #cc sb_zero 0
 
 # subtract xp every tick if there is debt
 scoreboard players set @a sb_calc 0
@@ -25,46 +26,46 @@ execute as @a unless score @s sb_deaths matches 0 run scoreboard players operati
 execute as @a unless score @s sb_deaths matches 0 run scoreboard players operation @s sb_debt += @s sb_calc
 
 # if not soulbound then replace item
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:feet run replaceitem entity @a armor.feet air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:legs run replaceitem entity @a armor.legs air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:chest run replaceitem entity @a armor.chest air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:head run replaceitem entity @a armor.head air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:offhand run replaceitem entity @a weapon.offhand air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:hotbar0 run replaceitem entity @a hotbar.0 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:hotbar1 run replaceitem entity @a hotbar.1 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:hotbar2 run replaceitem entity @a hotbar.2 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:hotbar3 run replaceitem entity @a hotbar.3 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:hotbar4 run replaceitem entity @a hotbar.4 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:hotbar5 run replaceitem entity @a hotbar.5 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:hotbar6 run replaceitem entity @a hotbar.6 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:hotbar7 run replaceitem entity @a hotbar.7 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:hotbar8 run replaceitem entity @a hotbar.8 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:inventory0 run replaceitem entity @a inventory.0 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:inventory1 run replaceitem entity @a inventory.1 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:inventory2 run replaceitem entity @a inventory.2 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:inventory3 run replaceitem entity @a inventory.3 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:inventory4 run replaceitem entity @a inventory.4 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:inventory5 run replaceitem entity @a inventory.5 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:inventory6 run replaceitem entity @a inventory.6 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:inventory7 run replaceitem entity @a inventory.7 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:inventory8 run replaceitem entity @a inventory.8 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:inventory9 run replaceitem entity @a inventory.9 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:inventory10 run replaceitem entity @a inventory.10 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:inventory11 run replaceitem entity @a inventory.11 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:inventory12 run replaceitem entity @a inventory.12 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:inventory13 run replaceitem entity @a inventory.13 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:inventory14 run replaceitem entity @a inventory.14 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:inventory15 run replaceitem entity @a inventory.15 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:inventory16 run replaceitem entity @a inventory.16 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:inventory17 run replaceitem entity @a inventory.17 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:inventory18 run replaceitem entity @a inventory.18 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:inventory19 run replaceitem entity @a inventory.19 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:inventory20 run replaceitem entity @a inventory.20 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:inventory21 run replaceitem entity @a inventory.21 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:inventory22 run replaceitem entity @a inventory.22 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:inventory23 run replaceitem entity @a inventory.23 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:inventory24 run replaceitem entity @a inventory.24 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:inventory25 run replaceitem entity @a inventory.25 air
-execute as @a unless score @s sb_deaths matches 0 unless predicate soulbound:inventory26 run replaceitem entity @a inventory.26 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:feet run replaceitem entity @s armor.feet air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:legs run replaceitem entity @s armor.legs air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:chest run replaceitem entity @s armor.chest air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:head run replaceitem entity @s armor.head air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:offhand run replaceitem entity @s weapon.offhand air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:hotbar0 run replaceitem entity @s hotbar.0 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:hotbar1 run replaceitem entity @s hotbar.1 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:hotbar2 run replaceitem entity @s hotbar.2 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:hotbar3 run replaceitem entity @s hotbar.3 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:hotbar4 run replaceitem entity @s hotbar.4 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:hotbar5 run replaceitem entity @s hotbar.5 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:hotbar6 run replaceitem entity @s hotbar.6 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:hotbar7 run replaceitem entity @s hotbar.7 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:hotbar8 run replaceitem entity @s hotbar.8 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:inventory0 run replaceitem entity @s inventory.0 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:inventory1 run replaceitem entity @s inventory.1 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:inventory2 run replaceitem entity @s inventory.2 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:inventory3 run replaceitem entity @s inventory.3 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:inventory4 run replaceitem entity @s inventory.4 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:inventory5 run replaceitem entity @s inventory.5 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:inventory6 run replaceitem entity @s inventory.6 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:inventory7 run replaceitem entity @s inventory.7 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:inventory8 run replaceitem entity @s inventory.8 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:inventory9 run replaceitem entity @s inventory.9 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:inventory10 run replaceitem entity @s inventory.10 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:inventory11 run replaceitem entity @s inventory.11 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:inventory12 run replaceitem entity @s inventory.12 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:inventory13 run replaceitem entity @s inventory.13 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:inventory14 run replaceitem entity @s inventory.14 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:inventory15 run replaceitem entity @s inventory.15 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:inventory16 run replaceitem entity @s inventory.16 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:inventory17 run replaceitem entity @s inventory.17 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:inventory18 run replaceitem entity @s inventory.18 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:inventory19 run replaceitem entity @s inventory.19 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:inventory20 run replaceitem entity @s inventory.20 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:inventory21 run replaceitem entity @s inventory.21 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:inventory22 run replaceitem entity @s inventory.22 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:inventory23 run replaceitem entity @s inventory.23 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:inventory24 run replaceitem entity @s inventory.24 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:inventory25 run replaceitem entity @s inventory.25 air
+execute as @a if score @s sb_deaths > #cc sb_zero unless predicate soulbound:inventory26 run replaceitem entity @s inventory.26 air
 
 scoreboard players set @a sb_deaths 0

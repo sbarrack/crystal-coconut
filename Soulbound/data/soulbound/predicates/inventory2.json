@@ -47,6 +47,13 @@
             "condition": "minecraft:entity_properties",
             "entity": "this",
             "predicate": {
+                "nbt": "{Inventory:[{Slot:11b,id:\"minecraft:beacon\"}]}"
+            }
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
                 "nbt": "{Inventory:[{Slot:11b,id:\"minecraft:shulker_box\"}]}"
             }
         },
